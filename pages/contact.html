@@ -54,7 +54,7 @@
                     <span class="title-line highlight">Research Team</span>
                 </h1>
                 <p class="hero-description">
-                    Connect with our medical research team for AI cardiac disease detection inquiries, 
+                    Connect with our medical research team for AI cardiac disease detection inquiries,
                     collaborations, and access to our groundbreaking research materials.
                 </p>
                 <div class="hero-stats">
@@ -122,7 +122,7 @@
                                     <input type="email" id="email" name="email" class="form-control" required placeholder="john.smith@hospital.edu">
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="subject">Subject</label>
                                 <select id="subject" name="subject" class="form-control" required>
@@ -210,7 +210,7 @@
             <div class="cta-content">
                 <h2 class="cta-title">Ready to Connect?</h2>
                 <p class="cta-description">
-                    Join our mission to revolutionize cardiac disease detection through AI. 
+                    Join our mission to revolutionize cardiac disease detection through AI.
                     Whether you're a researcher, healthcare provider, or potential collaborator, we'd love to hear from you.
                 </p>
                 <div class="cta-actions">
@@ -280,7 +280,7 @@
         // Mobile Navigation
         const navToggle = document.querySelector('.nav-toggle');
         const navMenu = document.querySelector('.nav-menu');
-        
+
         navToggle.addEventListener('click', () => {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -302,7 +302,23 @@
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('Thank you for your inquiry! Our research team will respond within 24 hours. This is a static frontend demo.');
+
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value.trim();
+
+                const mailSubject = `Contact Inquiry: ${subject || 'General Inquiry'}`;
+                const mailBody =
+                    `Name: ${name}\n` +
+                    `Email: ${email}\n` +
+                    `Subject: ${subject}\n\n` +
+                    `${message}`;
+
+                const mailtoLink = `mailto:swizanu3@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+                window.location.href = mailtoLink;
+
+                alert('A mail draft has been opened in your email client. Please send it to the research team.');
                 contactForm.reset();
             });
         }
@@ -313,10 +329,10 @@
             const question = item.querySelector('.faq-question');
             const answer = item.querySelector('.faq-answer');
             const icon = question.querySelector('i');
-            
+
             question.addEventListener('click', () => {
                 const isOpen = answer.style.maxHeight;
-                
+
                 // Close all other items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
@@ -325,7 +341,7 @@
                         otherItem.querySelector('.faq-question i').classList.add('fa-chevron-down');
                     }
                 });
-                
+
                 // Toggle current item
                 if (isOpen) {
                     answer.style.maxHeight = null;

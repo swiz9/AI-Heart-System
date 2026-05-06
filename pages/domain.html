@@ -1,683 +1,1158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Domain - AI Heart Disease Detection System</title>
-    <meta name="description" content="Research Domain details for the AI-Based Heart Disease Detection System including Literature Survey, Research Gaps, Objectives, and Methodology.">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta
+      name="description"
+      content="Research Domain details for the AI-Based Heart Disease Detection System including Literature Survey, Research Gaps, Objectives, and Methodology."
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        .gap-card {
-            background: #f8fafc;
-            border-left: 4px solid #ef4444;
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            margin-bottom: 1rem;
-        }
-        .gap-card h3 {
-            color: var(--deep-navy);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .problem-statement {
-            background: linear-gradient(135deg, var(--deep-navy), #004080);
-            color: white;
-            padding: 3rem 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            text-align: center;
-            margin: 4rem 0;
-        }
-        .problem-statement h2 {
-            color: var(--emerald-green);
-            margin-bottom: 1.5rem;
-            border: none;
-            padding: 0;
-        }
-        .objective-list {
-            list-style: none;
-            padding: 0;
-        }
-        .objective-list li {
-            position: relative;
-            padding-left: 2.5rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.6;
-        }
-        .objective-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: var(--emerald-green);
-            color: white;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        .methodology-step {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            align-items: flex-start;
-        }
-        .step-number {
-            background: rgba(0, 133, 62, 0.1);
-            color: var(--emerald-green);
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
+      .gap-card {
+        background: #f8fafc;
+        border-left: 4px solid #ef4444;
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        margin-bottom: 1rem;
+      }
+      .gap-card h3 {
+        color: var(--deep-navy);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .problem-statement {
+        background: linear-gradient(135deg, var(--deep-navy), #004080);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        text-align: center;
+        margin: 4rem 0;
+      }
+      .problem-statement h2 {
+        color: var(--emerald-green);
+        margin-bottom: 1.5rem;
+        border: none;
+        padding: 0;
+      }
+      .objective-list {
+        list-style: none;
+        padding: 0;
+      }
+      .objective-list li {
+        position: relative;
+        padding-left: 2.5rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.6;
+      }
+      .objective-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: var(--emerald-green);
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+      .methodology-step {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        align-items: flex-start;
+      }
+      .step-number {
+        background: rgba(0, 133, 62, 0.1);
+        color: var(--emerald-green);
+        font-size: 1.5rem;
+        font-weight: 800;
+      }
+      .references-section {
+        padding: var(--space-3xl) 0;
+        background: var(--gray-50);
+      }
+      .references-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-md);
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .reference-item {
+        display: flex;
+        gap: var(--space-md);
+        padding: var(--space-lg);
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--primary);
+      }
+      .ref-number {
+        font-weight: 600;
+        color: var(--primary);
+        min-width: 40px;
+        flex-shrink: 0;
+      }
+      .ref-text {
+        line-height: 1.6;
+        color: var(--gray-700);
+        font-size: 0.9rem;
+      }
     </style>
-</head>
-<body class="medical-theme">
+  </head>
+  <body class="medical-theme">
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <div class="brand-icon">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-                <span class="brand-text">AI <span class="highlight">Heart</span> System</span>
-            </div>
-            <div class="nav-menu">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="domain.html" class="nav-link active">Research</a>
-                <a href="milestones.html" class="nav-link">Progress</a>
-                <a href="documents.html" class="nav-link">Papers</a>
-                <a href="about.html" class="nav-link">Team</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="nav-container">
+        <div class="nav-brand">
+          <div class="brand-icon">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <span class="brand-text"
+            >AI <span class="highlight">Heart</span> System</span
+          >
         </div>
+        <div class="nav-menu">
+          <a href="../index.html" class="nav-link">Home</a>
+          <a href="domain.html" class="nav-link active">Research</a>
+          <a href="milestones.html" class="nav-link">Progress</a>
+          <a href="documents.html" class="nav-link">Papers</a>
+          <a href="about.html" class="nav-link">Team</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-background">
-            <div class="hero-particles"></div>
-            <div class="hero-gradient"></div>
+      <div class="hero-background">
+        <div class="hero-particles"></div>
+        <div class="hero-gradient"></div>
+      </div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fas fa-microscope"></i>
+            <span>Research Excellence</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-line">Advanced Research</span>
+            <span class="title-line highlight">Domain</span>
+          </h1>
+          <p class="hero-description">
+            Exploring the theoretical foundations, identified gaps, and
+            methodological approach of our AI-Based Heart Disease Detection
+            System through cutting-edge medical research.
+          </p>
+          <div class="hero-actions">
+            <a href="#literature" class="btn btn-primary">
+              <span>Explore Research</span>
+              <i class="fas fa-arrow-down"></i>
+            </a>
+            <a href="../pages/documents.html" class="btn btn-secondary">
+              <i class="fas fa-download"></i>
+              <span>Download Papers</span>
+            </a>
+          </div>
         </div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-microscope"></i>
-                    <span>Research Excellence</span>
-                </div>
-                <h1 class="hero-title">
-                    <span class="title-line">Advanced Research</span>
-                    <span class="title-line highlight">Domain</span>
-                </h1>
-                <p class="hero-description">
-                    Exploring the theoretical foundations, identified gaps, and methodological approach 
-                    of our AI-Based Heart Disease Detection System through cutting-edge medical research.
-                </p>
-                <div class="hero-actions">
-                    <a href="#literature" class="btn btn-primary">
-                        <span>Explore Research</span>
-                        <i class="fas fa-arrow-down"></i>
-                    </a>
-                    <a href="../pages/documents.html" class="btn btn-secondary">
-                        <i class="fas fa-download"></i>
-                        <span>Download Papers</span>
-                    </a>
-                </div>
+        <div class="hero-visual">
+          <div class="research-animation">
+            <div class="research-pulse">
+              <i class="fas fa-dna"></i>
             </div>
-            <div class="hero-visual">
-                <div class="research-animation">
-                    <div class="research-pulse">
-                        <i class="fas fa-dna"></i>
-                    </div>
-                    <div class="research-orbit">
-                        <div class="orbit-item"><i class="fas fa-heart"></i></div>
-                        <div class="orbit-item"><i class="fas fa-brain"></i></div>
-                        <div class="orbit-item"><i class="fas fa-chart-line"></i></div>
-                    </div>
-                </div>
+            <div class="research-orbit">
+              <div class="orbit-item"><i class="fas fa-heart"></i></div>
+              <div class="orbit-item"><i class="fas fa-brain"></i></div>
+              <div class="orbit-item"><i class="fas fa-chart-line"></i></div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Literature Survey Section -->
     <section id="literature" class="features-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Literature Survey</h2>
-                <p class="section-subtitle">Comprehensive analysis of existing cardiac AI research and identified gaps</p>
-            </div>
-            <div class="research-grid">
-                <div class="research-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="research-icon">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-book-medical"></i>
-                            <div class="icon-bg"></div>
-                        </div>
-                    </div>
-                    <h3 class="research-title">Fragmented Ecosystem</h3>
-                    <p class="research-description">
-                        Current cardiac diagnostic systems operate in isolation, lacking unified intelligence platforms for comprehensive disease detection and risk assessment.
-                    </p>
-                    <div class="research-metrics">
-                        <div class="metric">
-                            <span class="value">17.9M</span>
-                            <span class="label">Annual Deaths</span>
-                        </div>
-                        <div class="metric">
-                            <span class="value">31%</span>
-                            <span class="label">Global Mortality</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="research-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="research-icon">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-dollar-sign"></i>
-                            <div class="icon-bg"></div>
-                        </div>
-                    </div>
-                    <h3 class="research-title">Cost Barriers</h3>
-                    <p class="research-description">
-                        Commercial ECG monitoring solutions cost USD 200-2,000+, creating significant accessibility barriers in developing regions and underserved communities.
-                    </p>
-                    <div class="research-metrics">
-                        <div class="metric">
-                            <span class="value">10x</span>
-                            <span class="label">Cost Reduction</span>
-                        </div>
-                        <div class="metric">
-                            <span class="value">$20</span>
-                            <span class="label">Our Solution</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="research-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="research-icon">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-eye"></i>
-                            <div class="icon-bg"></div>
-                        </div>
-                    </div>
-                    <h3 class="research-title">Black Box Models</h3>
-                    <p class="research-description">
-                        Most cardiac AI systems operate as opaque black boxes, lacking explainability and clinical trust mechanisms essential for medical decision-making.
-                    </p>
-                    <div class="research-metrics">
-                        <div class="metric">
-                            <span class="value">SHAP</span>
-                            <span class="label">Explainability</span>
-                        </div>
-                        <div class="metric">
-                            <span class="value">LIME</span>
-                            <span class="label">Interpretability</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Literature Survey</h2>
+          <p class="section-subtitle">
+            Detailed review of cardiac disease detection methodologies and AI
+            approaches
+          </p>
         </div>
+        <div class="research-grid">
+          <div class="research-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="research-icon">
+              <div class="icon-wrapper">
+                <i class="fas fa-heartbeat"></i>
+                <div class="icon-bg"></div>
+              </div>
+            </div>
+            <h3 class="research-title">
+              ECG Signal Analysis and Arrhythmia Detection
+            </h3>
+            <p class="research-description">
+              Comprehensive review of ECG-based arrhythmia detection using deep
+              learning, from traditional feature engineering to modern CNN-LSTM
+              architectures achieving cardiologist-level accuracy on benchmark
+              datasets. <em>References: [3], [7], [12]-[17]</em>
+            </p>
+            <div class="research-metrics">
+              <div class="metric">
+                <span class="value">98.6%</span>
+                <span class="label">CNN-LSTM Accuracy</span>
+              </div>
+              <div class="metric">
+                <span class="value">MIT-BIH</span>
+                <span class="label">Benchmark Dataset</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="research-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="research-icon">
+              <div class="icon-wrapper">
+                <i class="fas fa-heart"></i>
+                <div class="icon-bg"></div>
+              </div>
+            </div>
+            <h3 class="research-title">Heart Failure Risk Prediction</h3>
+            <p class="research-description">
+              Analysis of machine learning approaches for HF prediction,
+              focusing on XGBoost performance, probability calibration
+              techniques, and the critical need for reliable risk estimates in
+              clinical decision-making.
+              <em>References: [18], [4], [8], [19]-[22]</em>
+            </p>
+            <div class="research-metrics">
+              <div class="metric">
+                <span class="value">85%</span>
+                <span class="label">XGBoost Accuracy</span>
+              </div>
+              <div class="metric">
+                <span class="value">Isotonic</span>
+                <span class="label">Calibration Method</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="research-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="research-icon">
+              <div class="icon-wrapper">
+                <i class="fas fa-heart"></i>
+                <div class="icon-bg"></div>
+              </div>
+            </div>
+            <h3 class="research-title">
+              Coronary Artery Disease Risk Prediction
+            </h3>
+            <p class="research-description">
+              Examination of CAD risk assessment using Framingham dataset,
+              comparing traditional logistic regression with ensemble methods
+              like ExtraTrees, and the importance of explainable AI for clinical
+              trust. <em>References: [23]-[27], [9], [10]</em>
+            </p>
+            <div class="research-metrics">
+              <div class="metric">
+                <span class="value">98.05%</span>
+                <span class="label">ExtraTrees Accuracy</span>
+              </div>
+              <div class="metric">
+                <span class="value">SHAP/LIME</span>
+                <span class="label">Explainability</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="research-card" data-aos="fade-up" data-aos-delay="400">
+            <div class="research-icon">
+              <div class="icon-wrapper">
+                <i class="fas fa-video"></i>
+                <div class="icon-bg"></div>
+              </div>
+            </div>
+            <h3 class="research-title">
+              Left Ventricular Hypertrophy Detection
+            </h3>
+            <p class="research-description">
+              Review of automated echocardiographic LVH detection using
+              spatiotemporal deep learning architectures like X3D-M, with
+              Grad-CAM++ for visual explainability in cardiac imaging AI.
+              <em>References: [28]-[33]</em>
+            </p>
+            <div class="research-metrics">
+              <div class="metric">
+                <span class="value">X3D-M</span>
+                <span class="label">Architecture</span>
+              </div>
+              <div class="metric">
+                <span class="value">Grad-CAM++</span>
+                <span class="label">Visualization</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- References Section -->
+    <section class="references-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">References</h2>
+          <p class="section-subtitle">
+            Complete bibliography of sources cited in the literature survey
+          </p>
+        </div>
+        <div class="references-list">
+          <div class="reference-item">
+            <span class="ref-number">[1]</span>
+            <span class="ref-text"
+              >World Health Organization, "Cardiovascular diseases (CVDs)," WHO
+              Fact Sheet, Sep. 2023. [Online]. Available:
+              https://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases(cvds)</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[2]</span>
+            <span class="ref-text"
+              >P. A. Heidenreich et al., "2022 AHA/ACC/HFSA guideline for the
+              management of heart failure," J. Am. Coll. Cardiol., vol. 79, no.
+              17, pp. e263–e421, 2022.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[3]</span>
+            <span class="ref-text"
+              >A. Hagiwara et al., "Arrhythmia detection from ECG signals using
+              deep learning," Comput. Biol. Med., vol. 104, pp. 1–8, 2019.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[4]</span>
+            <span class="ref-text"
+              >D. Chicco and G. Jurman, "Machine learning can predict survival
+              of patients with heart failure from serum creatinine and ejection
+              fraction alone," BMC Med. Inform. Decis. Mak., vol. 20, no. 16,
+              2020.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[5]</span>
+            <span class="ref-text"
+              >D. Lloyd-Jones et al., "Prediction of lifetime risk for
+              cardiovascular disease by risk factor burden at 50 years of age,"
+              Circulation, vol. 113, no. 6, pp. 791–798, 2006.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[6]</span>
+            <span class="ref-text"
+              >R. B. Devereux et al., "Prognostic significance of left
+              ventricular mass change during treatment of hypertension," JAMA,
+              vol. 292, no. 19, pp. 2350–2356, 2004.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[7]</span>
+            <span class="ref-text"
+              >A. Y. Hannun et al., "Cardiologist-level arrhythmia detection and
+              classification in ambulatory electrocardiograms using a deep
+              neural network," Nat. Med., vol. 25, pp. 65–69, 2019.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[8]</span>
+            <span class="ref-text"
+              >A. Niculescu-Mizil and R. Caruana, "Predicting good probabilities
+              with supervised learning," in Proc. 22nd Int. Conf. Mach. Learn.
+              (ICML), 2005, pp. 625–632.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[9]</span>
+            <span class="ref-text"
+              >D. Doshi-Velez and B. Kim, "Towards a rigorous science of
+              interpretable machine learning," arXiv:1702.08608, 2017.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[10]</span>
+            <span class="ref-text"
+              >S. M. Lundberg and S.-I. Lee, "A unified approach to interpreting
+              model predictions," in Proc. Adv. Neural Inf. Process. Syst.
+              (NeurIPS), 2017, pp. 4765–4774.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[11]</span>
+            <span class="ref-text"
+              >O. Oktay et al., "Anatomically constrained neural networks:
+              Application to cardiac image enhancement and segmentation," IEEE
+              Trans. Med. Imag., vol. 37, no. 2, pp. 384–395, 2018.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[12]</span>
+            <span class="ref-text"
+              >P. de Chazal, M. O'Dwyer, and R. B. Reilly, "Automatic
+              classification of heartbeats using ECG morphology and heartbeat
+              interval features," IEEE Trans. Biomed. Eng., vol. 51, no. 7, pp.
+              1196–1206, 2004.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[13]</span>
+            <span class="ref-text"
+              >S. Kiranyaz et al., "1D convolutional neural networks and
+              applications: A survey," Mech. Syst. Signal Process., vol. 151, p.
+              107398, 2021.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[14]</span>
+            <span class="ref-text"
+              >P. Rajpurkar et al., "Cardiologist-level arrhythmia detection
+              with convolutional neural networks," arXiv:1707.01836, 2017.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[15]</span>
+            <span class="ref-text"
+              >M. Abdel-Basset, V. Chang, and A. Abdelwahab, "A review of deep
+              learning for recurrent sequence analysis with an application to
+              ECG analysis," Comput. Biol. Med., vol. 130, p. 104200,
+              2021.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[16]</span>
+            <span class="ref-text"
+              >G. B. Moody and R. G. Mark, "The impact of the MIT-BIH Arrhythmia
+              Database," IEEE Eng. Med. Biol. Mag., vol. 20, no. 3, pp. 45–50,
+              2001.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[17]</span>
+            <span class="ref-text"
+              >Analog Devices, "AD8232 Single-Lead, Heart Rate Monitor Front
+              End," Datasheet, Rev. A, 2013.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[18]</span>
+            <span class="ref-text"
+              >T. Ahmad et al., "Machine learning methods improve
+              prognostication, identify clinically distinct phenotypes, and
+              detect heterogeneity in response to therapy in a large cohort of
+              heart failure patients," J. Am. Heart Assoc., vol. 7, no. 8, p.
+              e008823, 2018.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[19]</span>
+            <span class="ref-text"
+              >T. Chen and C. Guestrin, "XGBoost: A scalable tree boosting
+              system," in Proc. 22nd ACM SIGKDD Int. Conf. Knowl. Discov. Data
+              Mining, San Francisco, CA, 2016, pp. 785–794.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[20]</span>
+            <span class="ref-text"
+              >J. W. Magnani et al., "Machine learning for cardiovascular risk
+              prediction," J. Am. Heart Assoc., vol. 7, no. 14, 2018.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[21]</span>
+            <span class="ref-text"
+              >J. Platt, "Probabilistic outputs for support vector machines and
+              comparisons to regularized likelihood methods," in Advances in
+              Large Margin Classifiers, A. Smola et al., Eds. Cambridge, MA: MIT
+              Press, 1999, pp. 61–74.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[22]</span>
+            <span class="ref-text"
+              >B. Zadrozny and C. Elkan, "Transforming classifier scores into
+              accurate multiclass probability estimates," in Proc. 8th ACM
+              SIGKDD Int. Conf. Knowl. Discov. Data Mining, 2002, pp.
+              694–699.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[23]</span>
+            <span class="ref-text"
+              >T. R. Dawber, G. F. Meadors, and F. E. Moore, "Epidemiological
+              approaches to heart disease: The Framingham Study," Am. J. Public
+              Health, vol. 41, no. 3, pp. 279–286, 1951.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[24]</span>
+            <span class="ref-text"
+              >P. W. Wilson et al., "Prediction of coronary heart disease using
+              risk factor categories," Circulation, vol. 97, no. 18, pp.
+              1837–1847, 1998.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[25]</span>
+            <span class="ref-text"
+              >L. Breiman, "Random forests," Mach. Learn., vol. 45, pp. 5–32,
+              2001.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[26]</span>
+            <span class="ref-text"
+              >P. Geurts, D. Ernst, and L. Wehenkel, "Extremely randomized
+              trees," Mach. Learn., vol. 63, pp. 3–42, 2006.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[27]</span>
+            <span class="ref-text"
+              >M. T. Ribeiro, S. Singh, and C. Guestrin, "'Why should I trust
+              you?': Explaining the predictions of any classifier," in Proc.
+              22nd ACM SIGKDD Int. Conf. Knowl. Discov. Data Mining, 2016, pp.
+              1135–1144.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[28]</span>
+            <span class="ref-text"
+              >J. B. Sokolow and T. P. Lyon, "The ventricular complex in left
+              ventricular hypertrophy as obtained by unipolar precordial and
+              limb leads," Am. Heart J., vol. 37, no. 2, pp. 161–186,
+              1949.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[29]</span>
+            <span class="ref-text"
+              >D. Ouyang et al., "Video-based AI for beat-to-beat assessment of
+              cardiac function," Nature, vol. 580, pp. 252–256, 2020.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[30]</span>
+            <span class="ref-text"
+              >A. Arnab et al., "ViViT: A video vision transformer," in Proc.
+              IEEE/CVF Int. Conf. Comput. Vis. (ICCV), 2021, pp.
+              6836–6846.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[31]</span>
+            <span class="ref-text"
+              >C. Feichtenhofer, "X3D: Expanding architectures for efficient
+              video recognition," in Proc. IEEE/CVF Conf. Comput. Vis. Pattern
+              Recognit. (CVPR), 2020, pp. 203–213.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[32]</span>
+            <span class="ref-text"
+              >A. Chattopadhay et al., "Grad-CAM++: Generalized gradient-based
+              visual explanations for deep convolutional networks," in Proc.
+              IEEE Winter Conf. Appl. Comput. Vis. (WACV), 2018, pp.
+              839–847.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[33]</span>
+            <span class="ref-text"
+              >R. R. Selvaraju et al., "Grad-CAM: Visual explanations from deep
+              networks via gradient-based localization," in Proc. IEEE/CVF Int.
+              Conf. Comput. Vis. (ICCV), 2017, pp. 618–626.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[34]</span>
+            <span class="ref-text"
+              >A. R. Hevner et al., "Design science in information systems
+              research," MIS Q., vol. 28, no. 1, pp. 75–105, 2004.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[35]</span>
+            <span class="ref-text"
+              >J. Pan and W. J. Tompkins, "A real-time QRS detection algorithm,"
+              IEEE Trans. Biomed. Eng., vol. 32, no. 3, pp. 230–236, 1985.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[36]</span>
+            <span class="ref-text"
+              >Grand View Research, "AI in Cardiology Market Size, Share &
+              Trends Analysis Report," Market Research Report, 2023.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[37]</span>
+            <span class="ref-text"
+              >T. Hastie, R. Tibshirani, and J. Friedman, The Elements of
+              Statistical Learning, 2nd ed. New York, NY, USA: Springer,
+              2009.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[38]</span>
+            <span class="ref-text"
+              >F. Pedregosa et al., "Scikit-learn: Machine learning in Python,"
+              J. Mach. Learn. Res., vol. 12, pp. 2825–2830, 2011.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[39]</span>
+            <span class="ref-text"
+              >H. He and E. A. Garcia, "Learning from imbalanced data," IEEE
+              Trans. Knowl. Data Eng., vol. 21, no. 9, pp. 1263–1284,
+              2009.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[40]</span>
+            <span class="ref-text"
+              >P. Viola and M. Jones, "Rapid object detection using a boosted
+              cascade of simple features," in Proc. IEEE CVPR, 2001, pp.
+              511–518.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[41]</span>
+            <span class="ref-text"
+              >M. Sokolova and G. Lapalme, "A systematic analysis of performance
+              measures for classification tasks," Inf. Process. Manage., vol.
+              45, no. 4, pp. 427–437, 2009.</span
+            >
+          </div>
+          <div class="reference-item">
+            <span class="ref-number">[42]</span>
+            <span class="ref-text"
+              >A. L. Goldberger et al., "PhysioBank, PhysioToolkit, and
+              PhysioNet: Components of a new research resource for complex
+              physiologic signals," Circulation, vol. 101, no. 23, pp.
+              e215–e220, 2000.</span
+            >
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Problem Statement -->
     <section class="problem-section">
-        <div class="container">
-            <div class="problem-content">
-                <div class="problem-visual" data-aos="fade-right">
-                    <div class="problem-graphic">
-                        <div class="problem-circle">
-                            <i class="fas fa-heart-broken"></i>
-                        </div>
-                        <div class="problem-lines">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="problem-text" data-aos="fade-left">
-                    <h2 class="problem-title">The Core Problem</h2>
-                    <p class="problem-description">
-                        Healthcare systems lack a unified, AI-driven cardiac intelligence platform capable of comprehensive disease detection, real-time monitoring, and explainable decision support across multiple cardiac pathologies.
-                    </p>
-                    <div class="problem-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label">Disease Types</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1</div>
-                            <div class="stat-label">Unified Platform</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">0</div>
-                            <div class="stat-label">Existing Solutions</div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="problem-content">
+          <div class="problem-visual" data-aos="fade-right">
+            <div class="problem-graphic">
+              <div class="problem-circle">
+                <i class="fas fa-heart-broken"></i>
+              </div>
+              <div class="problem-lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
             </div>
+          </div>
+          <div class="problem-text" data-aos="fade-left">
+            <h2 class="problem-title">The Core Problem</h2>
+            <p class="problem-description">
+              Healthcare systems lack a unified, AI-driven cardiac intelligence
+              platform capable of comprehensive disease detection, real-time
+              monitoring, and explainable decision support across multiple
+              cardiac pathologies.
+            </p>
+            <div class="problem-stats">
+              <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Disease Types</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Unified Platform</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Existing Solutions</div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Research Gaps -->
     <section class="gaps-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Identified Research Gaps</h2>
-                <p class="section-subtitle">Critical challenges we're addressing through innovative AI solutions</p>
-            </div>
-            <div class="gaps-grid">
-                <div class="gap-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="gap-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <h3 class="gap-title">Prohibitive Costs</h3>
-                    <p class="gap-description">
-                        Commercial ECG monitoring solutions cost USD 200-2,000+, creating significant barriers to accessibility in developing regions.
-                    </p>
-                    <div class="gap-solution">
-                        <span class="solution-label">Our Solution:</span>
-                        <span class="solution-text">IoT hardware at $20/unit</span>
-                    </div>
-                </div>
-
-                <div class="gap-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="gap-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="gap-title">Black-Box Models</h3>
-                    <p class="gap-description">
-                        Most cardiac AI systems lack transparency, making it difficult for clinicians to trust and understand diagnostic decisions.
-                    </p>
-                    <div class="gap-solution">
-                        <span class="solution-label">Our Solution:</span>
-                        <span class="solution-text">SHAP & LIME explainability</span>
-                    </div>
-                </div>
-
-                <div class="gap-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="gap-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3 class="gap-title">Single-Pathology Focus</h3>
-                    <p class="gap-description">
-                        Existing systems focus on individual cardiac conditions, missing opportunities for comprehensive cardiovascular health assessment.
-                    </p>
-                    <div class="gap-solution">
-                        <span class="solution-label">Our Solution:</span>
-                        <span class="solution-text">4-in-1 detection platform</span>
-                    </div>
-                </div>
-
-                <div class="gap-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="gap-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3 class="gap-title">Resource Constraints</h3>
-                    <p class="gap-description">
-                        Advanced cardiac diagnostics remain inaccessible in developing regions due to infrastructure and expertise limitations.
-                    </p>
-                    <div class="gap-solution">
-                        <span class="solution-label">Our Solution:</span>
-                        <span class="solution-text">Clinical Dashboard</span>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Identified Research Gaps</h2>
+          <p class="section-subtitle">
+            Critical challenges we're addressing through innovative AI solutions
+          </p>
         </div>
+        <div class="gaps-grid">
+          <div class="gap-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="gap-icon">
+              <i class="fas fa-coins"></i>
+            </div>
+            <h3 class="gap-title">Prohibitive Costs</h3>
+            <p class="gap-description">
+              Commercial ECG monitoring solutions cost USD 200-2,000+, creating
+              significant barriers to accessibility in developing regions.
+            </p>
+            <div class="gap-solution">
+              <span class="solution-label">Our Solution:</span>
+              <span class="solution-text">IoT hardware at $20/unit</span>
+            </div>
+          </div>
+
+          <div class="gap-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="gap-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <h3 class="gap-title">Black-Box Models</h3>
+            <p class="gap-description">
+              Most cardiac AI systems lack transparency, making it difficult for
+              clinicians to trust and understand diagnostic decisions.
+            </p>
+            <div class="gap-solution">
+              <span class="solution-label">Our Solution:</span>
+              <span class="solution-text">SHAP & LIME explainability</span>
+            </div>
+          </div>
+
+          <div class="gap-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="gap-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3 class="gap-title">Single-Pathology Focus</h3>
+            <p class="gap-description">
+              Existing systems focus on individual cardiac conditions, missing
+              opportunities for comprehensive cardiovascular health assessment.
+            </p>
+            <div class="gap-solution">
+              <span class="solution-label">Our Solution:</span>
+              <span class="solution-text">4-in-1 detection platform</span>
+            </div>
+          </div>
+
+          <div class="gap-card" data-aos="zoom-in" data-aos-delay="400">
+            <div class="gap-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3 class="gap-title">Resource Constraints</h3>
+            <p class="gap-description">
+              Advanced cardiac diagnostics remain inaccessible in developing
+              regions due to infrastructure and expertise limitations.
+            </p>
+            <div class="gap-solution">
+              <span class="solution-label">Our Solution:</span>
+              <span class="solution-text">Clinical Dashboard</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Research Objectives -->
     <section class="objectives-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Research Objectives</h2>
-                <p class="section-subtitle">Our mission to revolutionize cardiac disease detection through AI</p>
-            </div>
-            <div class="objectives-timeline">
-                <div class="objective-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="objective-number">01</div>
-                    <div class="objective-content">
-                        <h3 class="objective-title">Real-time Monitoring</h3>
-                        <p class="objective-description">
-                            Developing low-cost IoT-enabled ECG monitoring systems with CNN-LSTM architecture achieving 98.6% accuracy at 312ms latency for continuous cardiac health surveillance.
-                        </p>
-                        <div class="objective-tech">
-                            <span class="tech-tag">CNN-LSTM</span>
-                            <span class="tech-tag">IoT</span>
-                            <span class="tech-tag">98.6% Accuracy</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="objective-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="objective-number">02</div>
-                    <div class="objective-content">
-                        <h3 class="objective-title">Probability Calibration</h3>
-                        <p class="objective-description">
-                            Creating calibrated risk prediction models using isotonic regression and XGBoost, providing reliable probability estimates for clinical decision support with 85% validation accuracy.
-                        </p>
-                        <div class="objective-tech">
-                            <span class="tech-tag">XGBoost</span>
-                            <span class="tech-tag">Calibration</span>
-                            <span class="tech-tag">SHAP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="objective-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="objective-number">03</div>
-                    <div class="objective-content">
-                        <h3 class="objective-title">Explainable AI</h3>
-                        <p class="objective-description">
-                            Engineering transparent diagnostic systems using LIME and SHAP explanations, enabling clinicians to understand and trust AI-driven cardiac disease predictions and recommendations.
-                        </p>
-                        <div class="objective-tech">
-                            <span class="tech-tag">LIME</span>
-                            <span class="tech-tag">SHAP</span>
-                            <span class="tech-tag">Grad-CAM++</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="objective-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="objective-number">04</div>
-                    <div class="objective-content">
-                        <h3 class="objective-title">Multi-modal Integration</h3>
-                        <p class="objective-description">
-                            Implementing comprehensive cardiac intelligence platforms integrating ECG, clinical data, and echocardiographic video analysis for holistic cardiovascular health assessment.
-                        </p>
-                        <div class="objective-tech">
-                            <span class="tech-tag">X3D-M</span>
-                            <span class="tech-tag">Video Analysis</span>
-                            <span class="tech-tag">ONNX</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Research Objectives</h2>
+          <p class="section-subtitle">
+            Our mission to revolutionize cardiac disease detection through AI
+          </p>
         </div>
+        <div class="objectives-timeline">
+          <div class="objective-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="objective-number">01</div>
+            <div class="objective-content">
+              <h3 class="objective-title">Real-time Monitoring</h3>
+              <p class="objective-description">
+                Developing low-cost IoT-enabled ECG monitoring systems with
+                CNN-LSTM architecture achieving 98.6% accuracy at 312ms latency
+                for continuous cardiac health surveillance.
+              </p>
+              <div class="objective-tech">
+                <span class="tech-tag">CNN-LSTM</span>
+                <span class="tech-tag">IoT</span>
+                <span class="tech-tag">98.6% Accuracy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="objective-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="objective-number">02</div>
+            <div class="objective-content">
+              <h3 class="objective-title">Probability Calibration</h3>
+              <p class="objective-description">
+                Creating calibrated risk prediction models using isotonic
+                regression and XGBoost, providing reliable probability estimates
+                for clinical decision support with 85% validation accuracy.
+              </p>
+              <div class="objective-tech">
+                <span class="tech-tag">XGBoost</span>
+                <span class="tech-tag">Calibration</span>
+                <span class="tech-tag">SHAP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="objective-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="objective-number">03</div>
+            <div class="objective-content">
+              <h3 class="objective-title">Explainable AI</h3>
+              <p class="objective-description">
+                Engineering transparent diagnostic systems using LIME and SHAP
+                explanations, enabling clinicians to understand and trust
+                AI-driven cardiac disease predictions and recommendations.
+              </p>
+              <div class="objective-tech">
+                <span class="tech-tag">LIME</span>
+                <span class="tech-tag">SHAP</span>
+                <span class="tech-tag">Grad-CAM++</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="objective-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="objective-number">04</div>
+            <div class="objective-content">
+              <h3 class="objective-title">Multi-modal Integration</h3>
+              <p class="objective-description">
+                Implementing comprehensive cardiac intelligence platforms
+                integrating ECG, clinical data, and echocardiographic video
+                analysis for holistic cardiovascular health assessment.
+              </p>
+              <div class="objective-tech">
+                <span class="tech-tag">X3D-M</span>
+                <span class="tech-tag">Video Analysis</span>
+                <span class="tech-tag">ONNX</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Methodology -->
     <section class="methodology-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Methodology Pipeline</h2>
-                <p class="section-subtitle">Systematic approach to cardiac disease detection and risk assessment</p>
-            </div>
-            <div class="methodology-flow">
-                <div class="method-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-visual">
-                        <div class="step-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="step-connector"></div>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Data Foundation</h3>
-                        <p class="step-description">
-                            Integration of multiple benchmark datasets including MIT-BIH Arrhythmia Database, Framingham Heart Study, and EchoNet-LVH for comprehensive model training.
-                        </p>
-                        <div class="step-details">
-                            <div class="detail-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>MIT-BIH Arrhythmia</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Framingham Study</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>EchoNet-LVH</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="method-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-visual">
-                        <div class="step-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="step-connector"></div>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">AI Modeling Layers</h3>
-                        <p class="step-description">
-                            Multi-modal architecture combining CNN-LSTM for ECG analysis, XGBoost for risk prediction, ExtraTrees for CAD assessment, and X3D-M for video processing.
-                        </p>
-                        <div class="step-details">
-                            <div class="detail-item">
-                                <i class="fas fa-heartbeat"></i>
-                                <span>ECG Arrhythmia Detection</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-heart"></i>
-                                <span>Heart Failure Prediction</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-heart"></i>
-                                <span>CAD Risk Assessment</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="method-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-visual">
-                        <div class="step-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <div class="step-connector"></div>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Explainability Framework</h3>
-                        <p class="step-description">
-                            Implementation of SHAP and LIME explanations for model interpretability, enabling clinicians to understand AI decisions and build trust in the system.
-                        </p>
-                        <div class="step-details">
-                            <div class="detail-item">
-                                <i class="fas fa-chart-bar"></i>
-                                <span>SHAP Explanations</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-search"></i>
-                                <span>LIME Interpretability</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-camera"></i>
-                                <span>Grad-CAM++ Visualization</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="method-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="step-visual">
-                        <div class="step-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                    </div>
-                    <div class="step-content">
-                        <h3 class="step-title">Clinical Deployment</h3>
-                        <p class="step-description">
-                            Dual-channel deployment through professional dashboard for healthcare providers and mobile application for patient monitoring and engagement.
-                        </p>
-                        <div class="step-details">
-                            <div class="detail-item">
-                                <i class="fas fa-desktop"></i>
-                                <span>Clinical Dashboard</span>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Methodology Pipeline</h2>
+          <p class="section-subtitle">
+            Systematic approach to cardiac disease detection and risk assessment
+          </p>
         </div>
+        <div class="methodology-flow">
+          <div class="method-step" data-aos="fade-up" data-aos-delay="100">
+            <div class="step-visual">
+              <div class="step-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <div class="step-connector"></div>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Data Foundation</h3>
+              <p class="step-description">
+                Integration of multiple benchmark datasets including MIT-BIH
+                Arrhythmia Database, Framingham Heart Study, and EchoNet-LVH for
+                comprehensive model training.
+              </p>
+              <div class="step-details">
+                <div class="detail-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>MIT-BIH Arrhythmia</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Framingham Study</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-check-circle"></i>
+                  <span>EchoNet-LVH</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="method-step" data-aos="fade-up" data-aos-delay="200">
+            <div class="step-visual">
+              <div class="step-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <div class="step-connector"></div>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">AI Modeling Layers</h3>
+              <p class="step-description">
+                Multi-modal architecture combining CNN-LSTM for ECG analysis,
+                XGBoost for risk prediction, ExtraTrees for CAD assessment, and
+                X3D-M for video processing.
+              </p>
+              <div class="step-details">
+                <div class="detail-item">
+                  <i class="fas fa-heartbeat"></i>
+                  <span>ECG Arrhythmia Detection</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-heart"></i>
+                  <span>Heart Failure Prediction</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-heart"></i>
+                  <span>CAD Risk Assessment</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="method-step" data-aos="fade-up" data-aos-delay="300">
+            <div class="step-visual">
+              <div class="step-icon">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div class="step-connector"></div>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Explainability Framework</h3>
+              <p class="step-description">
+                Implementation of SHAP and LIME explanations for model
+                interpretability, enabling clinicians to understand AI decisions
+                and build trust in the system.
+              </p>
+              <div class="step-details">
+                <div class="detail-item">
+                  <i class="fas fa-chart-bar"></i>
+                  <span>SHAP Explanations</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-search"></i>
+                  <span>LIME Interpretability</span>
+                </div>
+                <div class="detail-item">
+                  <i class="fas fa-camera"></i>
+                  <span>Grad-CAM++ Visualization</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="method-step" data-aos="fade-up" data-aos-delay="400">
+            <div class="step-visual">
+              <div class="step-icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+            </div>
+            <div class="step-content">
+              <h3 class="step-title">Clinical Deployment</h3>
+              <p class="step-description">
+                Dual-channel deployment through professional dashboard for
+                healthcare providers and mobile application for patient
+                monitoring and engagement.
+              </p>
+              <div class="step-details">
+                <div class="detail-item">
+                  <i class="fas fa-desktop"></i>
+                  <span>Clinical Dashboard</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Technology Stack -->
     <section class="tech-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Core Technologies</h2>
-                <p class="section-subtitle">Advanced AI and medical technologies powering our research</p>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="tech-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <div class="tech-name">Python</div>
-                </div>
-                <div class="tech-item" data-aos="zoom-in" data-aos-delay="150">
-                    <div class="tech-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="tech-name">TensorFlow</div>
-                </div>
-                <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="tech-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <div class="tech-name">PyTorch</div>
-                </div>
-                <div class="tech-item" data-aos="zoom-in" data-aos-delay="250">
-                    <div class="tech-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="tech-name">Scikit-Learn</div>
-                </div>
-                <div class="tech-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="tech-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <div class="tech-name">Flask</div>
-                </div>
-                <div class="tech-item" data-aos="zoom-in" data-aos-delay="350">
-                    <div class="tech-icon">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <div class="tech-name">React</div>
-                </div>
-                
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Core Technologies</h2>
+          <p class="section-subtitle">
+            Advanced AI and medical technologies powering our research
+          </p>
         </div>
+        <div class="tech-grid">
+          <div class="tech-item" data-aos="zoom-in" data-aos-delay="100">
+            <div class="tech-icon">
+              <i class="fab fa-python"></i>
+            </div>
+            <div class="tech-name">Python</div>
+          </div>
+          <div class="tech-item" data-aos="zoom-in" data-aos-delay="150">
+            <div class="tech-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="tech-name">TensorFlow</div>
+          </div>
+          <div class="tech-item" data-aos="zoom-in" data-aos-delay="200">
+            <div class="tech-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="tech-name">PyTorch</div>
+          </div>
+          <div class="tech-item" data-aos="zoom-in" data-aos-delay="250">
+            <div class="tech-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="tech-name">Scikit-Learn</div>
+          </div>
+          <div class="tech-item" data-aos="zoom-in" data-aos-delay="300">
+            <div class="tech-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <div class="tech-name">Flask</div>
+          </div>
+          <div class="tech-item" data-aos="zoom-in" data-aos-delay="350">
+            <div class="tech-icon">
+              <i class="fab fa-react"></i>
+            </div>
+            <div class="tech-name">React</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Explore Our Research</h2>
-                <p class="cta-description">
-                    Dive deeper into our methodology, download our publications, or connect with our research team to learn more about our groundbreaking work in cardiac disease detection.
-                </p>
-                <div class="cta-actions">
-                    <a href="../pages/documents.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-download"></i>
-                        <span>Download Dissertation</span>
-                    </a>
-                    <a href="../pages/about.html" class="btn btn-secondary btn-large">
-                        <i class="fas fa-users"></i>
-                        <span>Meet Research Team</span>
-                    </a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Explore Our Research</h2>
+          <p class="cta-description">
+            Dive deeper into our methodology, download our publications, or
+            connect with our research team to learn more about our
+            groundbreaking work in cardiac disease detection.
+          </p>
+          <div class="cta-actions">
+            <a href="../pages/documents.html" class="btn btn-primary btn-large">
+              <i class="fas fa-download"></i>
+              <span>Download Dissertation</span>
+            </a>
+            <a href="../pages/about.html" class="btn btn-secondary btn-large">
+              <i class="fas fa-users"></i>
+              <span>Meet Research Team</span>
+            </a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="brand-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="brand-info">
-                        <h3>AI Heart System</h3>
-                        <p>Revolutionary cardiac disease detection through advanced AI technology</p>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="link-group">
-                        <h4>Research</h4>
-                        <a href="../index.html">Home</a>
-                        <a href="domain.html">Domain</a>
-                        <a href="documents.html">Papers</a>
-                    </div>
-                    <div class="link-group">
-                        <h4>Team</h4>
-                        <a href="about.html">Researchers</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="about.html">Supervision</a>
-                    </div>
-                    <div class="link-group">
-                        <h4>Institution</h4>
-                        <a href="#">SLIIT</a>
-                        <a href="#">Information Technology</a>
-                        <a href="#">Research Division</a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="brand-icon">
+              <i class="fas fa-heartbeat"></i>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 AI Heart Disease Detection System. SLIIT Department of Information Technology. All rights reserved.</p>
+            <div class="brand-info">
+              <h3>AI Heart System</h3>
+              <p>
+                Revolutionary cardiac disease detection through advanced AI
+                technology
+              </p>
             </div>
+          </div>
+          <div class="footer-links">
+            <div class="link-group">
+              <h4>Research</h4>
+              <a href="../index.html">Home</a>
+              <a href="domain.html">Domain</a>
+              <a href="documents.html">Papers</a>
+            </div>
+            <div class="link-group">
+              <h4>Team</h4>
+              <a href="about.html">Researchers</a>
+              <a href="contact.html">Contact</a>
+              <a href="about.html">Supervision</a>
+            </div>
+            <div class="link-group">
+              <h4>Institution</h4>
+              <a href="#">SLIIT</a>
+              <a href="#">Information Technology</a>
+              <a href="#">Research Division</a>
+            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 AI Heart Disease Detection System. SLIIT Department of
+            Information Technology. All rights reserved.
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
 
-        // Mobile Navigation
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+      // Mobile Navigation
+      const navToggle = document.querySelector(".nav-toggle");
+      const navMenu = document.querySelector(".nav-menu");
 
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+      navToggle.addEventListener("click", () => {
+        navToggle.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      });
 
-        // Research Animation
-        const researchOrbit = document.querySelector('.research-orbit');
-        if (researchOrbit) {
-            let rotation = 0;
-            setInterval(() => {
-                rotation += 1;
-                researchOrbit.style.transform = `rotate(${rotation}deg)`;
-            }, 50);
-        }
+      // Smooth Scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Research Animation
+      const researchOrbit = document.querySelector(".research-orbit");
+      if (researchOrbit) {
+        let rotation = 0;
+        setInterval(() => {
+          rotation += 1;
+          researchOrbit.style.transform = `rotate(${rotation}deg)`;
+        }, 50);
+      }
     </script>
-</body>
+  </body>
 </html>
